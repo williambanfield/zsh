@@ -44,7 +44,7 @@ function myPrompt () {
       PR_MAIN+=$vcs_info_msg_0_
     fi
 
-    PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
+    #PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
     PS1+=%(?..'[%B%F{9}%?%b]'$'\n')
     PS1+=$PR_SIGN_BEGIN' '
     PS1+=$PR_MAIN' '
