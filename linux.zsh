@@ -15,3 +15,5 @@ if [[ -a $ZSH_DIRCOLORS ]]; then
 else
     which dircolors > /dev/null && eval "`dircolors -b`"
 fi
+
+alias ls=' ls --color=auto'
