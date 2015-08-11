@@ -3,11 +3,9 @@ autoload add-zsh-hook
 
 # enable and configure vcs_info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' stagedstr '%F{2}●'
-zstyle ':vcs_info:*' unstagedstr '%F{1}●'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable hg git cvs svn
-zstyle ':vcs_info:*' formats "$terminfo[sgr0]%r[%F{2}%b$terminfo[sgr0]]:%S %F{1}%u%F{2}%c$terminfo[sgr0] "
+zstyle ':vcs_info:*' formats "%r[%b]:%S "
 
 function myPrompt () {
     setopt prompt_subst
