@@ -15,6 +15,9 @@
 #    /usr/local/go/bin:
 #    /usr/texbin:
 
+# athena
+export athena=lucasem@athena.dialup.mit.edu
+
 # my bins
 export PATH=$PATH:$HOME/bin
 

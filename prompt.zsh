@@ -45,8 +45,8 @@ function myPrompt () {
     fi
 
     #PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
-    PS1+=%(?..'[%B%F{9}%?%b]'$'\n')
-    PS1+=$PR_SIGN_BEGIN' '
+    PS1+=%(?..[%B%F{9}%?%b]$'\n')
+    #PS1+=$PR_SIGN_BEGIN' '
     PS1+=$PR_MAIN' '
     PS1+=$PR_SIGN_END
 
@@ -57,4 +57,3 @@ function clearLine () {
   print -rn -- $terminfo[el]
 }
 add-zsh-hook preexec clearLine
-
