@@ -16,7 +16,9 @@
 #    /usr/texbin:
 
 # athena
-export athena=lucasem@athena.dialup.mit.edu
+export athena="lucasem@athena.dialup.mit.edu"
+export lm=$athnea":web_scripts/lm"
+export sigep=$athena":../../../../activity/s/sigep/web_scripts/public"
 
 # my bins
 export PATH=$PATH:$HOME/bin
@@ -34,3 +36,7 @@ export PATH=$PATH:$SCALA_HOME/bin
 export ZSH_CONFIG="$HOME/.config/zsh"
 export ZSH_CACHE="$HOME/.cache/zsh"
 mkdir -p $ZSH_CACHE
+
+# TLA+
+export CLASSPATH=/usr/local/tla
+
