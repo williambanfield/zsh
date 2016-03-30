@@ -32,3 +32,4 @@ foreach file (`echo $sources`)
         source $file
     fi
 end
+

@@ -35,4 +35,4 @@ zle -C hist-complete complete-word _generic
 zstyle ':completion:hist-complete:*' completer _history
 bindkey '^X^X' hist-complete
 
-setopt AUTO_CD EXTENDED_GLOB NOMATCH BEEP TRANSIENT_RPROMPT COMPLETE_IN_WORD AUTO_PUSHD PUSHD_IGNORE_DUPS no_clobber
+setopt AUTO_CD EXTENDED_GLOB NOMATCH BEEP TRANSIENT_RPROMPT COMPLETE_IN_WORD AUTO_PUSHD PUSHD_IGNORE_DUPS clobber

@@ -16,9 +16,10 @@
 #    /usr/texbin:
 
 # athena
-export athena="lucasem@athena.dialup.mit.edu"
-export lm=$athnea":web_scripts/lm"
-export sigep=$athena":../../../../activity/s/sigep/web_scripts/public"
+export athena='lucasem@athena.dialup.mit.edu'
+export lm=$athena':web_scripts/lm'
+export sigep=$athena':../../../../activity/s/sigep/web_scripts/public'
+export docs='me@docs.lucasem.com'
 
 # my bins
 export PATH=$PATH:$HOME/bin
@@ -31,6 +32,10 @@ export PATH=$PATH:$GOPATH/bin
 # scala
 export SCALA_HOME=/usr/local/scala
 export PATH=$PATH:$SCALA_HOME/bin
+
+# db
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/local/mongodb/bin
 
 # zsh
 export ZSH_CONFIG="$HOME/.config/zsh"
