@@ -29,6 +29,9 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# rust
+export PATH=$PATH:$HOME/.cargo/bin
+
 # scala
 export SCALA_HOME=/usr/local/scala
 export PATH=$PATH:$SCALA_HOME/bin

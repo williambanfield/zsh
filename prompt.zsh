@@ -5,7 +5,7 @@ autoload add-zsh-hook
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable hg git cvs svn
-zstyle ':vcs_info:*' formats "%r[%b]:%S "
+zstyle ':vcs_info:*' formats "%r[%F{2}%b%f]:%S "
 
 function myPrompt () {
     setopt prompt_subst
@@ -33,6 +33,11 @@ function myPrompt () {
     fi
     local PR_SIGN_END="%B◯%b "
 
+    local PR_VENV=''
+    if [[ "$VIRTUAL_ENV" != "" ]]; then
+      PR_VENV="(%F{3}`basename $VIRTUAL_ENV`%f) "
+    fi
+
     vcs_info
 
     local PR_MAIN=''
@@ -43,6 +48,7 @@ function myPrompt () {
     fi
 
     #PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
+    PS1+=$PR_VENV
     PS1+=%(?..[%B%F{9}%?%b]$'\n')
     #PS1+=$PR_SIGN_BEGIN' '
     PS1+=$PR_MAIN' '
