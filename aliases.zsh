@@ -29,5 +29,5 @@ alias cd....='....'
 
 alias athena="ssh $athena"
 alias athenax="ssh -Y $athena"
-alias fs="ssh me@fs.lucasem.com"
 alias docs="ssh me@docs.lucasem.com"
+alias web="ssh me@lucasem.com"

@@ -22,11 +22,12 @@ export sigep=$athena':../../../../activity/s/sigep/web_scripts/public'
 export docs='me@docs.lucasem.com'
 
 # my bins
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 # golang
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
 # rust
