@@ -19,7 +19,6 @@
 export athena='lucasem@athena.dialup.mit.edu'
 export lm=$athena':web_scripts/lm'
 export sigep=$athena':../../../../activity/s/sigep/web_scripts/public'
-export docs='me@docs.lucasem.com'
 
 # my bins
 export PATH=$HOME/bin:$PATH
