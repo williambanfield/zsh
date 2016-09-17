@@ -27,6 +27,8 @@ alias cd..='..'
 alias cd...='...'
 alias cd....='....'
 
+alias activate="source $HOME/py/bin/activate"
+
 alias athena="ssh $athena"
 alias athenax="ssh -Y $athena"
 alias web="ssh me@lucasem.com"
