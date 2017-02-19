@@ -1,5 +1,5 @@
 # athena
-export athena='lucasem@athena.dialup.mit.edu'
+export athena='athena.dialup.mit.edu'
 
 # my bins
 export PATH=$HOME/bin:$PATH

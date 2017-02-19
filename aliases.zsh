@@ -32,7 +32,4 @@ alias web="ssh me@lucasem.com"
 alias mail="ssh me@mail.lucasem.com"
 alias xmpp="ssh me@xmpp.lucasem.com"
 alias compute="ssh me@compute.lucasem.com"
-
-# mail
-alias muttmit="mutt -F ~/.mutt/mit"
-alias muttweb="mutt -F ~/.mutt/web"
+alias pro="ssh 18.102.222.191"
