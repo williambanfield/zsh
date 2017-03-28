@@ -1,5 +1,10 @@
 # athena
 export athena='athena.dialup.mit.edu'
+export web='lucasem.com'
+export mail="mail.$web"
+export xmpp="xmpp.$web"
+export compute="compute.$web"
+export rig="rig.$web"
 
 # my bins
 export PATH=$HOME/bin:$PATH
