@@ -26,6 +26,9 @@ sources+="$ZSH_CONFIG/private.zsh"
 # completion config needs to be after system config
 sources+="$ZSH_CONFIG/completion.zsh"
 
+# autosuggestions
+sources+="$ZSH_CONFIG/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
 # try to include all sources
 foreach file (`echo $sources`)
     if [[ -a $file ]]; then
