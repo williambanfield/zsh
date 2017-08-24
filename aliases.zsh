@@ -20,6 +20,7 @@ alias ....=' cd ../../..'
 # misc
 alias grep='grep --color=auto'
 alias l=' ls -l'
+alias less='less -RFX'
 
 # py
 alias py='ptipython --vi'
