@@ -48,11 +48,11 @@ function myPrompt () {
     fi
 
     #PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
-    PS1+=%(?..[%B%F{1}%?%f%b]$'\n')
+    PS1+=%(?..%B%F{1}%?%f%b:)
     PS1+=$PR_VENV
     #PS1+=$PR_SIGN_BEGIN' '
     PS1+=$PR_MAIN' '
-    PS1+=$PR_SIGN_END
+    PS1+="$PR_SIGN_END"
 
 }
 add-zsh-hook precmd myPrompt
