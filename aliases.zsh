@@ -24,19 +24,18 @@ alias less='less -RFX'
 
 # py
 alias py='ptipython --vi'
-alias activate="source $HOME/py/bin/activate"
+alias activate="source $HOME/.py/bin/activate"
 
 # ssh
 alias athena="ssh $athena"
 alias athenax="ssh -Y $athena"
-alias web="ssh $web"
+alias web="mosh $web"
 alias mail="ssh $mail"
-alias xmpp="ssh $xmpp"
 alias vpn="ssh $vpn"
-alias rig="ssh $rig"
+alias rig="mosh $rig"
 
 alias tmail="mail -t bin/t"
-alias txmpp="xmpp -t bin/t"
-alias trig="rig -t bin/t"
-alias tweb="web -t bin/t"
+alias trig="rig bin/t"
+alias tcomm="rig bin/tcomm"
+alias tweb="web bin/t"
 alias tvpn="vpn -t bin/t"
