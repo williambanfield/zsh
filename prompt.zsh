@@ -12,7 +12,7 @@ function myPrompt () {
 
     local FAIL=%(?..〈%B%F{1}%?%f%b〉)
 
-    local DATE=[%B%F{green}$(date +'%a %H:%M')%f%b]
+    local DATE='[%B%F{green}%D{%a %H:%M}%f%b]'
 
     local VENV
     if [[ $VIRTUAL_ENV ]]; then
@@ -50,7 +50,7 @@ function myPrompt () {
 }
 add-zsh-hook precmd myPrompt
 
-function clearLine () {
-  print -rn -- $terminfo[el]
+TMOUT=2
+TRAPALRM() {
+    zle reset-prompt
 }
-add-zsh-hook preexec clearLine
