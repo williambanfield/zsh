@@ -33,22 +33,24 @@ function myPrompt () {
     fi
     local PR_SIGN_END="%B◯%b "
 
+    local PR_DATE="[%B%F{green}$(date +'%a %H:%M')%f%b]"
     local PR_VENV=''
     if [[ "$VIRTUAL_ENV" != "" ]]; then
-      PR_VENV="(%B%F{3}`basename $VIRTUAL_ENV`%f%b) "
+      PR_VENV="(%B%F{3}`basename $VIRTUAL_ENV`%f%b)"
     fi
 
     vcs_info
 
     local PR_MAIN=''
     if [[ "$vcs_info_msg_0_" == "" ]]; then
-      PR_MAIN+='%~'
+      PR_MAIN+=' %~'
     else
       PR_MAIN+=$vcs_info_msg_0_
     fi
 
     #PS1+='%{'$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]'%n@%M:%~'$terminfo[rc]'%}'
     PS1+=%(?..%B%F{1}%?%f%b:)
+    PS1+=$PR_DATE
     PS1+=$PR_VENV
     #PS1+=$PR_SIGN_BEGIN' '
     PS1+=$PR_MAIN' '
