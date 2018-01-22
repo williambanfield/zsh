@@ -20,10 +20,12 @@ alias ....=' cd ../../..'
 # misc
 alias grep='grep --color=auto'
 alias l=' ls -l'
-alias less='less -RFX'
+less=`command -v less`
+alias less="$less -RFX"
+alias lesss="$less -Rr"
 
 # py
-alias py='ptipython --vi'
+alias py='ptipython'
 alias activate="source $HOME/.py/bin/activate"
 
 # ssh
