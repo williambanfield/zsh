@@ -3,7 +3,6 @@ autoload add-zsh-hook
 
 # enable and configure vcs_info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable hg git cvs svn
 zstyle ':vcs_info:*' formats ' %r[%B%F{6}%b%f%%b]:%S'
 
