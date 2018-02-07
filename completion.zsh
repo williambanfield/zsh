@@ -1,86 +1,84 @@
-# @author     Sebastian Tramp <mail@sebastian.tramp.name>
-# @license    http://opensource.org/licenses/gpl-license.php
-#
-# tab completion configuration
-#
-
-# add an autoload function path, if directory exists
-# http://www.zsh.org/mla/users/2002/msg00232.html
-functionsd="$ZSH_CONFIG/functions.d"
-if [[ -d "$functionsd" ]] {
-    fpath=( $functionsd $fpath )
-    autoload -U $functionsd/*(:t)
-}
-
-# load completions system
+autoload -U compinit
+compinit
 zmodload -i zsh/complist
 
-# auto rehash commands
-# http://www.zsh.org/mla/users/2011/msg00531.html
+# allow one error for every three characters typed
+zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
+
+# start menu completion only if it could find no unambiguous initial string
+zstyle ':completion:*:correct:*'       insert-unambiguous true
+zstyle ':completion:*:corrections'     format $'\e[01;33m -- %d -- \e[00;00m'
+zstyle ':completion:*:correct:*'       original true
+
+# activate color-completion
+zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
+
+# format on completion
+zstyle ':completion:*:descriptions'    format $'\e[01;33m -- %d -- \e[00;00m'
+
+zstyle ':completion:*:expand:*'        tag-order all-expansions
+zstyle ':completion:*:history-words'   list false
+zstyle ':completion:*:history-words'   menu yes
+zstyle ':completion:*:history-words'   remove-all-dups yes
+zstyle ':completion:*:history-words'   stop yes
+
+zstyle ':completion:*'                 matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:matches'         group 'yes'
+zstyle ':completion:*'                 group-name ''
+zstyle ':completion:*'                 menu select=5
+zstyle ':completion:*:messages'        format $'\e[01;35m -- %d -- \e[00;00m'
+zstyle ':completion:*:options'         auto-description '%d'
+zstyle ':completion:*:options'         description 'yes'
+
+# on processes completion complete all user processes
+zstyle ':completion:*:processes'       command 'ps -au$USER'
+
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+zstyle ':completion:*'                 verbose true
+zstyle ':completion:*:-command-:*:'    verbose false
+
+zstyle ':completion:*:warnings'        format $'\e[01;31m -- No Matches Found -- \e[00;00m'
+zstyle ':completion:correct:'          prompt 'correct to: %e'
+
+# Ignore completion functions for commands you don't have:
+zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
+
+zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+zstyle ':completion:*:manuals'    separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections   true
+zstyle ':completion:*:man:*'      menu yes select
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' rehash true
 
-# for all completions: menuselection
-zstyle ':completion:*' menu select=1
+zstyle ':completion:*' users lucasem root
 
-# for all completions: grouping the output
-zstyle ':completion:*' group-name ''
+## correction
+setopt correct
+zstyle -e ':completion:*' completer '
+    if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]] ; then
+        _last_try="$HISTNO$BUFFER$CURSOR"
+        reply=(_complete _match _ignored _prefix _files)
+    else
+        if [[ $words[1] == (rm|mv) ]] ; then
+            reply=(_complete _files)
+        else
+            reply=(_oldlist _expand _complete _ignored _correct _approximate _files)
+        fi
+    fi'
 
-# for all completions: color
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*'            use-cache  yes
+zstyle ':completion:*:complete:*' cache-path "$ZSH_CACHE"
 
-# for all completions: selected item
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;47
-
-# completion of .. directories
-zstyle ':completion:*' special-dirs true
-
-# fault tolerance
-zstyle ':completion:*' completer _complete _correct _approximate
-# (1 error on 3 characters)
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-
-# case insensitivity
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-# for all completions: grouping / headline / ...
-zstyle ':completion:*:messages' format $'\e[01;35m -- %d -- \e[00;00m'
-zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found -- \e[00;00m'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d -- \e[00;00m'
-zstyle ':completion:*:corrections' format $'\e[01;33m -- %d -- \e[00;00m'
-
-# statusline for many hits
-zstyle ':completion:*:default' select-prompt $'\e[01;35m -- Match %M    %P -- \e[00;00m'
-
-# for all completions: show comments when present
-zstyle ':completion:*' verbose yes
-
-# in menu selection strg+space to go to subdirectories
-bindkey -M menuselect '^@' accept-and-infer-next-history
-
-# case-insensitive -> partial-word (cs) -> substring completion:
-zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# caching of completion stuff
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$ZSH_CACHE"
-
-
-# ~dirs: reorder output sorting: named dirs over userdirs
-zstyle ':completion::*:-tilde-:*:*' group-order named-directories users
-
-# ssh: reorder output sorting: user over hosts
-zstyle ':completion::*:ssh:*:*' tag-order "users hosts"
-
-# kill: advanced kill completion
-zstyle ':completion::*:kill:*:*' command 'ps xf -U $USER -o pid,%cpu,cmd'
-zstyle ':completion::*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
-
-# rm: advanced completion (e.g. bak files first)
-zstyle ':completion::*:rm:*:*' file-patterns '*.o:object-files:object\ file *(~|.(old|bak|BAK)):backup-files:backup\ files *~*(~|.(o|old|bak|BAK)):all-files:all\ files'
-
-# vi: advanced completion (e.g. tex and rc files first)
-zstyle ':completion::*:vim:*:*' file-patterns 'Makefile|*(rc|log)|*.(php|tex|bib|sql|zsh|ini|sh|vim|rb|sh|js|tpl|csv|rdf|txt|phtml|tex|py|n3):vi-files:vim\ likes\ these\ files *~(Makefile|*(rc|log)|*.(log|rc|php|tex|bib|sql|zsh|ini|sh|vim|rb|sh|js|tpl|csv|rdf|txt|phtml|tex|py|n3)):all-files:other\ files'
-
-zstyle :compinstall filename '~/.zshrc'
-
-autoload -Uz compinit && compinit
+# host completion
+[[ -r ~/.ssh/config ]] && _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*}) || _ssh_config_hosts=()
+[[ -r ~/.ssh/known_hosts ]] && _ssh_hosts=(${(R)${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}:#[0-9]*}) || _ssh_hosts=()
+hosts=(
+    $(hostname)
+    $_ssh_config_hosts[@]
+    $_ssh_hosts[@]
+    localhost
+)
+zstyle ':completion:*:hosts' hosts $hosts
