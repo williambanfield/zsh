@@ -4,6 +4,9 @@ then
   alias v=nvim
   alias vi=nvim
   alias vim=nvim
+else
+  alias v=vim
+  alias vi=vim
 fi
 
 # git
