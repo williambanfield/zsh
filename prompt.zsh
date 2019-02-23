@@ -31,12 +31,6 @@ function myPrompt () {
         SIGN=◯
     elif [[ `whoami` == 'root' ]]; then
         SIGN=%
-    elif [[ `whoami` == 'vagrant' ]]; then
-        SIGN=∇
-    elif [[ `uname -s |tr '[:upper:]' '[:lower:]'` == 'darwin' ]]; then
-        SIGN=
-    elif [[ `uname -a |tr '[:upper:]' '[:lower:]'` == *'ubuntu'* ]]; then
-        SIGN=u
     elif [[ `uname -a |tr '[:upper:]' '[:lower:]'` == *'arch'* ]]; then
         SIGN=△
     else

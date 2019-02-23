@@ -9,8 +9,6 @@ bindkey "^[[1;5D" .backward-word
 bindkey "^[[1;5C" .forward-word
 bindkey "^[[1;6D" backward-delete-word
 bindkey "^[[1;6C" delete-word
-# alt+left (on mac) deletes word
-bindkey "^[" backward-kill-word
 # fn-left
 bindkey "^[[H" .backward-word
 # fn-right

@@ -29,6 +29,9 @@ sources+="$ZSH_CONFIG/completion.zsh"
 # autosuggestions
 sources+="$ZSH_CONFIG/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# virtualenv wrapper shell functions
+sources+="/usr/bin/virtualenvwrapper.sh"
+
 # try to include all sources
 foreach file (`echo $sources`)
     if [[ -a $file ]]; then
@@ -36,3 +39,6 @@ foreach file (`echo $sources`)
     fi
 end
 
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
