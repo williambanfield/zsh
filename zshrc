@@ -11,11 +11,6 @@ sources+="$ZSH_CONFIG/environment.zsh"
 sources+="$ZSH_CONFIG/options.zsh"
 sources+="$ZSH_CONFIG/prompt.zsh"
 sources+="$ZSH_CONFIG/aliases.zsh"
-sources+="$ZSH_CONFIG/plugins.zsh"
-
-# highlights the live command line
-# Cloned From: git://github.com/nicoulaj/zsh-syntax-highlighting.git
-sources+="$ZSH_CONFIG/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Check for a system specific file
 systemFile=`uname -s | tr "[:upper:]" "[:lower:]"`
@@ -26,9 +21,6 @@ sources+="$ZSH_CONFIG/private.zsh"
 
 # completion config needs to be after system config
 sources+="$ZSH_CONFIG/completion.zsh"
-
-# autosuggestions
-sources+="$ZSH_CONFIG/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # virtualenv wrapper shell functions
 sources+="/usr/bin/virtualenvwrapper.sh"
@@ -44,6 +36,7 @@ eval "$(ssh-agent -s)" > /dev/null
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux -2
 fi
+export ZSH_CONFIG="$HOME/.zsh"
 
 
 ### Added by Zplugin's installer
@@ -51,3 +44,5 @@ source '/home/will/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
+#
+source "$ZSH_CONFIG/plugins.zsh"
