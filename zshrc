@@ -11,6 +11,7 @@ sources+="$ZSH_CONFIG/environment.zsh"
 sources+="$ZSH_CONFIG/options.zsh"
 sources+="$ZSH_CONFIG/prompt.zsh"
 sources+="$ZSH_CONFIG/aliases.zsh"
+sources+="$ZSH_CONFIG/plugins.zsh"
 
 # highlights the live command line
 # Cloned From: git://github.com/nicoulaj/zsh-syntax-highlighting.git
@@ -38,7 +39,15 @@ foreach file (`echo $sources`)
         source $file
     fi
 end
+eval "$(ssh-agent -s)" > /dev/null
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  exec tmux -2
 fi
+
+
+### Added by Zplugin's installer
+source '/home/will/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
