@@ -53,7 +53,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' rehash true
 
-zstyle ':completion:*' users lucasem root
+zstyle ':completion:*' users wbanfield root
 
 ## correction
 setopt correct

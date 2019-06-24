@@ -14,6 +14,11 @@ mkdir -p $ZSH_CACHE
 # bins
 export PATH=$HOME/bin:$PATH:$GOBIN
 
+# npm
+export PATH=~/.npm-global/bin:$PATH
+
 # virtualenvs 
 export WORKON_HOME=~/.virtualenvs
 
+
+export EDITOR=vim
