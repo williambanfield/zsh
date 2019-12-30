@@ -31,8 +31,10 @@ foreach file (`echo $sources`)
         source $file
     fi
 end
-eval "$(ssh-agent -s)" > /dev/null
-
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+fi
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux -2
