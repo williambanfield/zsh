@@ -1,7 +1,7 @@
 # golang
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/godev
-export GOBIN=$GOPATH/godev/bin
+export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
