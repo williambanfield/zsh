@@ -11,6 +11,9 @@ sources+="$ZSH_CONFIG/environment.zsh"
 sources+="$ZSH_CONFIG/options.zsh"
 sources+="$ZSH_CONFIG/prompt.zsh"
 sources+="$ZSH_CONFIG/aliases.zsh"
+sources+="$ZSH_CONFIG/functions.zsh"
+sources+="$ZSH_CONFIG/kube_completion.zsh"
+sources+="$ZSH_CONFIG/kube-ps1.zsh"
 
 # Check for a system specific file
 systemFile=`uname -s | tr "[:upper:]" "[:lower:]"`

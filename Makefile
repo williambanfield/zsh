@@ -1,4 +1,4 @@
 install:
-	curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh | sh -s
-	rm ~/.zshrc
+	# Installs zplugin
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
 	ln -s `pwd`/zshrc ~/.zshrc
