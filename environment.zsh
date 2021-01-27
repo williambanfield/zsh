@@ -22,3 +22,9 @@ export WORKON_HOME=~/.virtualenvs
 
 
 export EDITOR=vim
+
+# kubebuilder
+export PATH=$PATH:/usr/local/kubebuilder/bin
+
+# cquery
+export PATH=$PATH:/usr/local/cquery/bin

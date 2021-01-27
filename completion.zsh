@@ -75,6 +75,7 @@ zstyle ':completion:*:complete:*' cache-path "$ZSH_CACHE"
 # host completion
 [[ -r ~/.ssh/config ]] && _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*}) || _ssh_config_hosts=()
 [[ -r ~/.ssh/known_hosts ]] && _ssh_hosts=(${(R)${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}:#[0-9]*}) || _ssh_hosts=()
+
 hosts=(
     $(hostname)
     $_ssh_config_hosts[@]
