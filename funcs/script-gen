@@ -1,0 +1,19 @@
+#!/bin/zsh
+#
+if [ $# != 3 ]
+then
+    echo "usage: $0 <path-to-script>"
+	return
+fi
+
+
+filename="$1"
+cat <<'EOF' > $filename
+#!/bin/sh
+set -e
+set -u
+
+EOF
+chmod +x $filename
+
+ls $filename

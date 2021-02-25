@@ -49,5 +49,11 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 #
+#
 export ZSH_CONFIG="$HOME/.zsh"
 source "$ZSH_CONFIG/plugins.zsh"
+
+# Autoload my personal zsh funcs
+FPATH="$FPATH:$ZSH_CONFIG/funcs"
+autoload -Uz $(find  "$ZSH_CONFIG/funcs" -maxdepth 1 -not -type d)
+
