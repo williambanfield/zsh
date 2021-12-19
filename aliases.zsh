@@ -43,3 +43,9 @@ alias cb='xclip -i -selection clipboard'
 alias rg-go='rg  -g "!vendor/**" -g "*.go"'
 
 alias rg-java='rg  -g  "*.java"'
+
+alias modroot='go env | grep GOMOD= | sed "s/GOMOD=\"\(.*\)go.mod\"/\1/g"'
+
+# go to the root of the current go module
+alias cdg='cd modroot'
+

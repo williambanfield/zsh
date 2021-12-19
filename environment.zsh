@@ -10,7 +10,6 @@ export ZSH_CONFIG="$HOME/.config/zsh"
 export ZSH_CACHE="$HOME/.cache/zsh"
 mkdir -p $ZSH_CACHE
 
-
 # bins
 export PATH=$HOME/bin:$PATH:$GOBIN
 
@@ -23,8 +22,8 @@ export WORKON_HOME=~/.virtualenvs
 
 export EDITOR=vim
 
-# kubebuilder
-export PATH=$PATH:/usr/local/kubebuilder/bin
+# gpg key
+export GPG_TTY=$(tty)
 
 # cquery
 export PATH=$PATH:/usr/local/cquery/bin
