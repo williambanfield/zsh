@@ -1,5 +1,9 @@
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
 
+deps:
+	#inetutils provides hostname, which the prompt relies on
+	sudo pacman -S inetutils
+
 install:
 	sudo pacman -S zsh
 
@@ -17,4 +21,4 @@ config:
 	ln -s `pwd`/zshrc ~/.zshrc
 	ln -s `pwd` ~/.zsh
 
-all: install chsh config
+all: install chsh deps config
