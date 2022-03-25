@@ -8,6 +8,7 @@ chsh:
 
 config:
 	# Installs zinit
+	rm -rf "$(shell dirname $(ZINIT_HOME))"
 	mkdir -p "$(shell dirname $(ZINIT_HOME))"
 	git clone https://github.com/zdharma-continuum/zinit.git $(ZINIT_HOME)
 
