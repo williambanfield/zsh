@@ -9,7 +9,7 @@ zstyle ':vcs_info:*' formats ' %r[%B%F{6}%b%f%%b]:%S'
 function myPrompt () {
     setopt prompt_subst
 
-    local FAIL=%(?..{%B%F{1}%?%f%b})
+    local FAIL=%(?..❮%B%F{1}%?%f%b❯)
 
     local NAME='%B%F{green}`whoami`%f%b'
     local AT='%B%F{yellow}@%f%b'
