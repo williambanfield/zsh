@@ -9,9 +9,12 @@ zstyle ':vcs_info:*' formats ' %r[%B%F{6}%b%f%%b]:%S'
 function myPrompt () {
     setopt prompt_subst
 
-    local FAIL=%(?..〈%B%F{1}%?%f%b〉)
+    local FAIL=%(?..{%B%F{1}%?%f%b})
 
-    local DATE='[%B%F{green}%D{%a %H:%M}%f%b]'
+    local NAME='%B%F{green}`whoami`%f%b'
+    local AT='%B%F{yellow}@%f%b'
+    local HOSTNAME='%B%F{blue}`hostname`%f%b'
+    local NAH="[$NAME$AT$HOSTNAME]"
 
     local VENV
     if [[ $VIRTUAL_ENV ]]; then
@@ -26,24 +29,17 @@ function myPrompt () {
       MAIN=' %~'
     fi
 
-    local SIGN
+    local SIGN=◆
     if true; then
-        SIGN=◯
+        SIGN=◆
     elif [[ `whoami` == 'root' ]]; then
         SIGN=%
-    elif [[ `uname -a |tr '[:upper:]' '[:lower:]'` == *'arch'* ]]; then
-        SIGN=△
     else
         SIGN=∴
     fi
     SIGN="%B$SIGN%b "
 
 
-    PS1="$FAIL$DATE$MAIN $SIGN$VENV"
+    PS1="$FAIL$NAH$MAIN $SIGN$VENV"
 }
 add-zsh-hook precmd myPrompt
-
-TMOUT=2
-TRAPALRM() {
-    zle reset-prompt
-}
