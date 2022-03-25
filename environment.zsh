@@ -1,5 +1,7 @@
 # golang
-export GOROOT=/usr/lib/go
+if [[ `uname` == 'Linux' ]]; then
+    export GOROOT=/usr/lib/go
+fi
 export GOPATH=$HOME/godev
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
