@@ -3,6 +3,7 @@ if [[ `uname` == 'Linux' ]]; then
     export GOROOT=/usr/lib/go
 fi
 export GOPATH=$HOME/godev
+export PYTHONPATH=$HOME/.local/bin
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
@@ -15,12 +16,14 @@ mkdir -p $ZSH_CACHE
 # bins
 export PATH=$HOME/bin:$PATH:$GOBIN
 
+# pip 
+export PATH=$PYTHONPATH:$PATH
+
 # npm
 export PATH=~/.npm-global/bin:$PATH
 
 # virtualenvs 
 export WORKON_HOME=~/.virtualenvs
-
 
 export EDITOR=vim
 
