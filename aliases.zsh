@@ -49,3 +49,6 @@ alias modroot='go env | grep GOMOD= | sed "s/GOMOD=\"\(.*\)go.mod\"/\1/g"'
 # go to the root of the current go module
 alias cdg='cd modroot'
 
+# alias for starting the modd watcher program with a config for re-building and testing go programs.
+alias mg='modd-go'
+

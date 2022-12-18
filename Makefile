@@ -3,6 +3,7 @@ ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
 deps:
 	#inetutils provides hostname, which the prompt relies on
 	sudo pacman -S inetutils
+	go install github.com/cortesi/modd/cmd/modd@latest
 
 install:
 	sudo pacman -S zsh
