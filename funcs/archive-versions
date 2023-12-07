@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+if [ $# -ne 1 ]; then
+	echo "Usage: $0 <package>"
+	exit 1
+fi
+
+PACKAGE=$1
+PACKAGE_FIRST_CHAR=$(echo "$PACKAGE" | cut -c1)
+
+curl -sL "https://archive.archlinux.org/packages/$PACKAGE_FIRST_CHAR/$PACKAGE" \
+	| sed -n "s/^<a href=\"\([^\"]*\)\">.*/\1/p" \
+	| grep -v '\.sig$' \
+	| sed "s/$PACKAGE-\([0-9]\+\.[0-9]\+\.[0-9]\+-[0-9]\+\)-x86_64\.pkg\.tar\..*/\1/p"
+

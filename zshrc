@@ -7,11 +7,12 @@
 export ZSH_CONFIG="$HOME/.zsh"
 
 typeset -ga sources
+sources+="$ZSH_CONFIG/kube-ps1.sh"
+sources+="$ZSH_CONFIG/init-nvm.sh"
 sources+="$ZSH_CONFIG/environment.zsh"
 sources+="$ZSH_CONFIG/options.zsh"
 sources+="$ZSH_CONFIG/prompt.zsh"
 sources+="$ZSH_CONFIG/aliases.zsh"
-sources+="$ZSH_CONFIG/functions.zsh"
 sources+="$ZSH_CONFIG/kube_completion.zsh"
 sources+="$ZSH_CONFIG/kube-ps1.zsh"
 
@@ -57,4 +58,5 @@ source "$ZSH_CONFIG/plugins.zsh"
 # Autoload my personal zsh funcs
 FPATH="$FPATH:$ZSH_CONFIG/funcs"
 autoload -Uz $(find  "$ZSH_CONFIG/funcs" -maxdepth 1 -not -type d)
-
+FPATH="$FPATH:$ZSH_CONFIG/funcs/completions"
+autoload -Uz compinit && compinit

@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+PACKAGE=$1
+VERSION=$2
+PACKAGE_FIRST_CHAR=$(echo "$PACKAGE" | cut -c1)
+
+if [ $# -ne 2 ]; then
+	echo "Usage: $0 <package> <version>"
+	exit 1
+fi
+
+VERSION_LINK=$(curl -sL "https://archive.archlinux.org/packages/$PACKAGE_FIRST_CHAR/$PACKAGE" \
+	| sed -n "s/^<a href=\"\($PACKAGE-$VERSION-[^\"]*\)\">.*/\1/p" \
+	| grep -v "\.sig$")
+pacman -U "https://archive.archlinux.org/packages/$PACKAGE_FIRST_CHAR/$PACKAGE/$VERSION_LINK"
