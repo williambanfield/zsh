@@ -7,6 +7,7 @@
 export ZSH_CONFIG="$HOME/.zsh"
 
 typeset -ga sources
+sources+="$ZSH_CONFIG/savecmd.zsh"
 sources+="$ZSH_CONFIG/kube-ps1.sh"
 sources+="$ZSH_CONFIG/init-nvm.sh"
 sources+="$ZSH_CONFIG/environment.zsh"
@@ -14,7 +15,6 @@ sources+="$ZSH_CONFIG/options.zsh"
 sources+="$ZSH_CONFIG/prompt.zsh"
 sources+="$ZSH_CONFIG/aliases.zsh"
 sources+="$ZSH_CONFIG/kube_completion.zsh"
-sources+="$ZSH_CONFIG/kube-ps1.zsh"
 
 # Check for a system specific file
 systemFile=`uname -s | tr "[:upper:]" "[:lower:]"`

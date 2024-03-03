@@ -15,6 +15,7 @@ mkdir -p $ZSH_CACHE
 
 # bins
 export PATH=$HOME/bin:$PATH:$GOBIN
+export PATH=$HOME/.gptscripts:$PATH
 
 # pip 
 export PATH=$PYTHONPATH:$PATH
@@ -25,10 +26,12 @@ export PATH=~/.npm-global/bin:$PATH
 # virtualenvs 
 export WORKON_HOME=~/.virtualenvs
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # gpg key
 export GPG_TTY=$(tty)
 
 # cquery
 export PATH=$PATH:/usr/local/cquery/bin
+
+ulimit -n 65536
