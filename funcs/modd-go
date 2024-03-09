@@ -1,12 +1,12 @@
 #!/bin/zsh
-if [ $# != 0 ]
-then
-    echo "usage: $0"
+
+if [ $# != 0 ]; then
+	echo "usage: $0"
 	return
 fi
 
-TMP=`mktemp`
-cat << EOF > "$TMP"
+TMP=$(mktemp)
+cat <<EOF >"$TMP"
 **/*.go !**/*_test.go {
 	prep: go build
 }

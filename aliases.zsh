@@ -9,6 +9,12 @@ alias g=git
 alias gcam='git commit -am'
 alias gch='git checkout'
 alias gcb='git checkout -b'
+alias gcb='git checkout -b'
+alias gchm='git checkout master'
+
+# github
+alias ghb='gh browse --branch `git rev-parse master`'
+alias myprs='gh pr list -A williambanfield'
 
 # cd
 alias cd=' cd'
@@ -36,7 +42,8 @@ alias hsvault-stage='VAULT_ADDR=$VAULT_ADDR_STAGE hsvault'
 
 alias go113='GOROOT=/usr/lib/go-1.13 /usr/lib/go-1.13/bin/go'
 
-alias kube-update='curl -sS --user $(whoami) -o ~/.kube/config https://kubeconfig-generator.squarespace.net'
+alias k='kubectl'
+
 
 alias cb='xclip -i -selection clipboard'
 
@@ -51,4 +58,6 @@ alias cdg='cd modroot'
 
 # alias for starting the modd watcher program with a config for re-building and testing go programs.
 alias mg='modd-go'
+
+alias tf='terraform'
 

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+nvim -Es -c 'set tw=80' -c 'norm gggqG' -c '%p' -c 'q!' -

@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [ $# != 0 ]; then
+	echo "usage: $0 <branch-name>"
+	return
+fi
+
+bn="$1"
+mgm=`git merge-base --fork-point origin/master`
+
+git cherry-pick "$mgm".."$1"

@@ -83,3 +83,8 @@ hosts=(
     localhost
 )
 zstyle ':completion:*:hosts' hosts $hosts
+
+# zsh completion for 1password
+eval "$(op completion zsh)"; compdef _op op
+eval "$(gh completion -s zsh)"; compdef _gh gh
+

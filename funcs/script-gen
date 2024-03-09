@@ -1,17 +1,14 @@
 #!/bin/zsh
-#
-if [ $# != 3 ]
-then
-    echo "usage: $0 <path-to-script>"
+
+if [ $# != 1 ]; then
+	echo "usage: $0 <path-to-script>"
 	return
 fi
 
-
 filename="$1"
-cat <<'EOF' > $filename
-#!/bin/sh
-set -e
-set -u
+cat <<'EOF' >$filename
+#!/bin/bash
+set -euo pipefail
 
 EOF
 chmod +x $filename

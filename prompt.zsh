@@ -39,7 +39,6 @@ function myPrompt () {
     fi
     SIGN="%B$SIGN%b "
 
-
-    PS1="$FAIL$NAH$MAIN $SIGN$VENV"
+    PS1="$FAIL$NAH$(kube_ps1)$MAIN $SIGN$VENV"
 }
 add-zsh-hook precmd myPrompt

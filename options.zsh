@@ -11,8 +11,8 @@ if (( ! EUID )); then
 else
     HISTFILE=$ZSH_CACHE/history
 fi
-SAVEHIST=10000
-HISTSIZE=12000
+SAVEHIST=100000000000
+HISTSIZE=100000000000
 setopt share_history append_history extended_history hist_no_store hist_ignore_all_dups hist_ignore_space
 
 zle -C hist-complete complete-word _generic
