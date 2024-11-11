@@ -2,7 +2,7 @@
 autoload add-zsh-hook
 
 function get_pane_cachedir() {
-  tmux display-message -p "$HOME/.cache/wut/#S_#I_#P"
+  tmux display-message -p "$HOME/.cache/cmd_history/#S_#I_#P"
 }
 
 function startCmdPipe() {
