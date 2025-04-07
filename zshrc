@@ -41,7 +41,12 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
 fi
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux -2
+  TMUX_SCRIPT="$HOME/repos/config/tmux/shell_start.sh"
+  if [ -x "$TMUX_SCRIPT" ]; then
+    exec "$TMUX_SCRIPT"
+  else
+    exec tmux -2
+  fi
 fi
 
 ### Added by zinit's installer
